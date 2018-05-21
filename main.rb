@@ -15,7 +15,7 @@ def benchmark_nerd_terminologies
   File.open("nerd_terminologies.txt", "r") do |f|
     f.each_line do |line|
       s = 0.0
-      query = non_alpha(line.gsub(' ', '+'))
+      query = non_alpha(line).gsub(' ', '+')
       (0...TRIES).each do
         doc = Nokogiri::HTML(open("#{URL}#{query}"))
         sleep(POLITENESS_POLICY_WAIT)
