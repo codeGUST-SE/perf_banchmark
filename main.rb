@@ -16,7 +16,7 @@ def rand_n(n, max)
 end
 
 def non_alpha(word)
-    word.gsub(/[^a-z ]/i, '')
+  word.gsub(/[^a-z ]/i, '')
 end
 
 def benchmark_nerd_terminologies
@@ -64,13 +64,24 @@ def benchmark_random_queries
     (0...TEST_PER_QUERY).each do
       query = []
       rand_n(n, words.size).each do |i|
-        query << words[i]
+        query << non_alpha(words[i])
       end
       query = query.join('+')
-      puts query
+      s = 0.0
+      (0...TRIES).each do
+        doc = Nokogiri::HTML(open("#{URL}#{query}"))
+        sleep(POLITENESS_POLICY_WAIT)
+        s += doc.xpath("//*[@id='retrieval-time']").text.split[2].to_f
+      end
+      s /= TRIES.to_f
+      results[n] << s
+    end
+    File.open("random_queries_test_results.txt", "a") do |f|
+      sum = results[n].inject(0){|s,x| s + x }
+      avg = sum.to_f / TEST_PER_QUERY.to_f
+      f.write("#{n}\t#{avg}\n")
     end
   end
-
 end
 
 benchmark_random_queries
