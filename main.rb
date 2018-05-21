@@ -6,7 +6,7 @@ POLITENESS_POLICY_WAIT = 0
 TRIES = 3
 
 def non_alpha(word)
-    word.gsub(/[^a-z ]/i, ' ')
+    word.gsub(/[^a-z ]/i, '')
 end
 
 def benchmark_nerd_terminologies
