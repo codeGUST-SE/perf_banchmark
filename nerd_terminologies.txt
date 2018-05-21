@@ -1,0 +1,620 @@
+Abend
+Absolute address
+Absolute Coding
+Access violation
+ACM
+Action statement
+ActionScript
+ActiveX
+Ada
+Add
+ADO
+Advanced SCSI Programming Interface
+Aggregation
+Agile development methods
+Agile Manifesto
+Alert
+Algol
+Algorithm
+Altair BASIC
+Ambient Occlusion
+AOP
+API
+Applet
+Argument
+Arithmetic operator
+Array
+Array of pointers
+ASCII
+ASP
+ASPI
+Assembler
+Assembly
+Associative operation
+AutoHotkey
+Automata-based programming
+Automated unit testing
+Automation
+BooleanBabel
+Backend
+Back-face culling
+Background thread
+Backpropagation neural network
+Base address
+Batch file
+Batch job
+BCPL
+Bean
+BeanShell
+Binary Search
+Bind
+Bit shift
+Bitwise operators
+Block
+Block-level element
+BOM
+Bool
+Boolean
+Boolean data type
+Bracket
+Branch
+Brooks
+Bug
+Bug tracking
+Bugfairy
+Build computer
+Bytecode
+compiled programming language
+C sharp
+C++
+C#
+Camel book
+CamelCase
+Captured variable
+CC
+Chaos model
+Char
+Character code
+Character encoding
+Character set
+Chaos model
+Circuit satisfiability problem
+Class
+Class
+Classpath
+Clojure
+CLOS
+Closure
+CLR
+COBOL
+Cocoa
+Cocoa touch
+Code
+Code refactoring
+Codepage
+CoffeeScript
+Command language
+Comment
+Common business oriented language
+Common Gateway Interface
+Compilation
+Compile
+Compiler
+Complementarity
+Compute
+Computer science
+Commutative operation
+Concat
+Concatenation
+Concurrency
+Conditional expression
+Conditional statement
+Constant
+Constructor
+Constructor chaining
+Content migration
+Control flow
+CPAN
+CPL
+Crapplet
+CS
+CSAT
+CSS
+CSS compressor
+CSS editor
+Curly bracket
+Curry
+CVS
+Cygwin
+sparse matrixD
+DarkBASIC
+Dart
+Dataflow Programming
+Data-flow analysis
+Data flow diagram
+Data source
+Data type
+Datalog
+DDE
+Dead code
+Debug
+Debugger
+Debugging
+Declaration
+Declarative programming
+Declare
+Decompiler
+Decrement
+Deductive database
+Delimiter
+Dense matrix
+Dereference operator
+Dependent variable
+Developer
+DHTML
+Die
+Diff
+Direct address
+Discrete optimization
+Dissembler
+Div
+Django
+DML
+Do
+DOM
+Dragon book
+Dribbleware
+Dump
+Dword
+Dylan programming language
+Dynamic dump
+execEclipse
+ECMAScript
+Eight queens problem
+Element
+Ellipsis
+Else
+Else if
+Elsif
+Embedded Java
+Encapsulation
+Encode
+Endian
+Endless loop
+EOF
+Epoch
+Eq
+Equal
+Error
+Errorlevel
+Esac
+Escape
+Escape character
+Escape sequence
+Eval
+Event
+Event handler
+Event listener
+Event-driven programming
+Exec
+Exception
+Exception handling
+Exists
+Exponent
+Exponential backoff
+Expression
+foreach
+F#
+False
+Fifth generation language
+First generation language
+First-class object
+Flag
+Flat file
+Floating-point
+For
+Foreach
+Forth
+Forth generation language
+FORTRAN
+Framework
+Front end
+Full stack developer
+Function
+Functional programming
+Fuzz testing
+Game of LifeGame of Life
+Gang of four
+Garbage collection
+Gaussian pyramid
+GCC
+Ge
+General-purpose language
+Generation language
+Genetic programming
+GIGO
+GitHub
+Glitch
+Glob
+Glue code
+Go language
+Goto
+GPL
+GT
+GTK
+GW BASIC
+haskell programming languageHAL
+Hard code
+Hash
+Haskell
+Heap
+Hello world
+Heuristic evaluation
+Hex editor
+HDML
+Hiew
+High-level language
+HTML
+Hungarian notation
+Hwclock
+Hypertext Markup Language
+IterationIDE
+If else
+If statement
+Immutable object
+Imperative programming
+Implicit parallelism
+Increment
+Indirection operator
+Inherent error
+Inheritance
+Inline
+Input/output statement
+Instance
+Instantiation
+Instructions
+Int
+Integer
+Integrated Development Environment
+IntelliJ IDEA
+Intermediate language
+Interpreted
+Interpreter
+Invalid
+IOCCC
+IPC
+ISAPI
+Iteration
+JavaScript or JS logoJava
+Java champion
+Java EE
+Java ME
+Java native language
+Java reserved words
+JavaBean
+Javac
+JavaFX
+JavaScript
+JavaScriptCore
+Javax
+JBuilder
+JCL
+JDBC
+JDK
+JIL
+JIT
+JHTML
+JNI
+JRE
+JScript
+JSON
+JSP
+JSR
+Julia
+JVM
+Karel
+Kit
+Kludge
+Kluge
+LoopLabel
+Lambda calculus
+Language
+Language processor
+Lexical analysis
+Lexicon
+Linker
+LISP
+Live script
+Literal
+LLVM
+Local optimum
+Logic programming
+Logical operation
+LOGO
+Lookup table
+Loony bin
+Loop
+Loophole
+Loosely typed language
+Low-level language
+Library
+LT
+Lua
+LUT
+MATLAB logoMachine language
+Magic quotes
+Map
+Markup language
+Math
+Matlab
+Mbean
+Memoization
+Mercurial
+Meta-character
+Metaclass
+Metalanguage
+Method
+Method overloading
+Metro
+Middleware
+Mod
+Module
+Modulo
+Monkey testing
+Monte Carlo Method
+MSDN
+MSVC
+Multi-pass compiler
+MUMPS
+Mutex
+Microsoft .NETNaN
+Ne
+.NET
+Native compiler
+Native language
+Natural language
+NBSP
+NDA
+Nested function
+Nested loop join
+Newline
+Nil pointer
+Nim
+Node.js
+Nodelist
+Noncontiguous data structure
+Non-Disclosure Agreement
+Nonexecutable statement
+NO-OPeration instructions
+Null
+Null character
+Null pointer
+OperatorObject code
+Object file
+Object module
+Object-oriented programming
+Objective-C
+Obfuscated code
+OCaml
+Octave
+ODBC
+OOP
+One-pass compiler
+Opcode
+Open DataBase Connectivity
+OpenGL polygon
+Operand
+Operator
+Operator associatively
+Operator precedence
+OR operator
+Overflow error
+Overload
+practical extraction reporting languageP-code
+Package
+Parenthesis
+Parse
+Pascal
+Pascal case
+Pastebin
+PDL
+PEAR
+Perl
+Persistent memory
+PersonalJava
+PHP
+Phrase tag
+Pick
+Pickling
+PicoJava
+Pipe
+Pixel shader
+POD
+Pointer
+Polymorphism
+Pop
+Positional parameter
+Private
+Procedural language
+Procedure
+Process
+Program
+Program generator
+Program listing
+Programmable
+Programmer
+Programming
+Programming in logic
+Programming language
+Programming tools
+Prolog
+Pseudocode
+Pseudolanguage
+Pseudo-operation
+Pseudo-random
+Public
+PureBasic
+Push
+Python
+Python pickling
+Pythonic
+Qi
+QT
+Quick-and-dirty
+return statementR programming language
+Race condition
+Racket
+RAD
+Random
+Random seed
+RCS
+RDF
+React
+React Native
+Real number
+Recursion
+Recursive
+Regex
+Regular expression
+Reia
+Relational algebra
+Religion of Chi
+REM
+Remark
+Repeat counter
+REPL
+Reserved character
+Reserved word
+Resource Description Framework
+Return address
+Return statement
+Reverse engineering
+Revision control
+ROM BASIC
+Routine
+Routing algorithm
+RPG
+Ruby
+Run time
+Rust
+Spaghetti codeS-expression
+Safe font
+Sandbox
+Scala
+Scanf
+Schema matching
+Scheme programming language
+Scratch
+SDK
+Second generation language
+Section
+Security Descriptor Definition Language
+Seed
+Segfault
+Separator
+Sequence
+Server-side
+Server-side scripting
+Servlet
+SGML
+Shebang
+Shell scripts
+Shift
+Short-circuit operator
+Signedness
+Simulated annealing
+Single step
+Smalltalk
+SMIL
+Snippet
+SOAP
+Socket
+Soft
+Software development phases
+Software development process
+Software engineering
+Software library
+Software life cycle
+Source
+Source code
+Source computer
+Source data
+SourceForge
+Spaghetti code
+Sparse matrix
+Sparsity
+Special purpose language
+SPL
+Spooling
+SQL
+Stack
+Stack pointer
+Standard attribute
+Statement
+Stdin
+Strong typed language
+Stubroutine
+Stylesheet
+Subprogram
+Subroutine
+Subscript
+Substring
+Subversion
+Superclass
+Switch statement
+Syntactic sugar
+Syntax error
+System development
+Systems Engineer
+Systems Programming Language
+tupleTail recursion
+Tcl
+Tcl/Tk
+Ternary operator
+Theoretical computer science 
+Third-generation language
+Thread
+Thunk
+Tk
+Token
+Transcompiler
+True
+True BASIC
+Trunk
+Tuple
+Turbo Pascal
+Turing completeness
+Unary operator
+Undefined
+Undefined variable
+Underflow
+Unescape
+Unit test
+Unshift
+Value
+Var
+Variable
+VB
+Vector
+VHDL
+VIM
+Visual Basic
+Visual Studio
+Void
+Waterfall model
+Web development
+WebGL
+While
+Whole number
+WML
+Workspace
+XML
+XNA
+XOR operator
+XOXO
+XSL
+XSLT
+Y combinator
+YAML
+Z-buffering
+Zombie
