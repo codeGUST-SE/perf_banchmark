@@ -5,13 +5,17 @@ URL = "https://codegust.appspot.com/search?utf8=%E2%9C%93&q="
 POLITENESS_POLICY_WAIT = 0
 TRIES = 3
 
+def non_alpha(word)
+    word.gsub(/[^a-z ]/i, ' ')
+end
+
 def benchmark_nerd_terminologies
   results = {1=>[], 2=>[], 3=>[], 4=>[], 5=>[]}
 
   File.open("nerd_terminologies.txt", "r") do |f|
     f.each_line do |line|
       s = 0.0
-      query = line.gsub(' ', '+')
+      query = non_alpha(line.gsub(' ', '+'))
       (0...TRIES).each do
         doc = Nokogiri::HTML(open("#{URL}#{query}"))
         sleep(POLITENESS_POLICY_WAIT)
