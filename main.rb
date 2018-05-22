@@ -1,8 +1,11 @@
 require 'open-uri'
 require 'nokogiri'
 require 'set'
+require 'benchmark'
 
 URL = "https://codegust.appspot.com/search?utf8=%E2%9C%93&q="
+URL_GG = "https://www.google.com/search?q="
+URL_SC = "https://searchcode.com/?q="
 POLITENESS_POLICY_WAIT = 0
 TRIES = 3
 TEST_PER_QUERY = 500
@@ -84,4 +87,57 @@ def benchmark_random_queries
   end
 end
 
-benchmark_random_queries
+def e2e_compare_nerd_terminologies
+  results_cg = {1=>[], 2=>[], 3=>[], 4=>[], 5=>[]}
+  results_gg = {1=>[], 2=>[], 3=>[], 4=>[], 5=>[]}
+  results_sc = {1=>[], 2=>[], 3=>[], 4=>[], 5=>[]}
+
+  File.open("nerd_terminologies.txt", "r") do |f|
+    f.each_line do |line|
+      s_cg = 0.0
+      s_gg = 0.0
+      s_sc = 0.0
+      query = non_alpha(line).gsub(' ', '+')
+      (0...TRIES).each do
+        start = Time.now
+        Nokogiri::HTML(open("#{URL}#{query}"))
+        finish = Time.now
+        sleep(POLITENESS_POLICY_WAIT)
+        s_cg += (finish-start).to_f
+
+        start = Time.now
+        Nokogiri::HTML(open("#{URL_GG}#{query}"))
+        finish = Time.now
+        sleep(POLITENESS_POLICY_WAIT)
+        s_gg += (finish-start).to_f
+
+        start = Time.now
+        Nokogiri::HTML(open("#{URL_SC}#{query}"))
+        finish = Time.now
+        sleep(POLITENESS_POLICY_WAIT)
+        s_sc += (finish-start).to_f
+      end
+      s_cg /= TRIES.to_f
+      s_gg /= TRIES.to_f
+      s_sc /= TRIES.to_f
+      results_cg[line.split.size] << s_cg
+      results_gg[line.split.size] << s_gg
+      results_sc[line.split.size] << s_sc
+    end
+  end
+
+  File.open("nerd_terminologies_e2e_compare_results.txt", "w") do |f|
+    f.write("N\tcodeGUST\tGoogle\tsearchcode")
+    (1..5).each do |i|
+      avg_cg = (results_cg[i].inject(0){|s,x| s + x }).to_f / results_cg[i].length.to_f
+      avg_gg = (results_gg[i].inject(0){|s,x| s + x }).to_f / results_gg[i].length.to_f
+      avg_sc = (results_sc[i].inject(0){|s,x| s + x }).to_f / results_sc[i].length.to_f
+
+      f.write("#{i}\t#{avg_cg}\t#{avg_gg}\t#{avg_sc}\n")
+    end
+  end
+end
+
+# benchmark_random_queries
+# benchmark_nerd_terminologies
+e2e_compare_nerd_terminologies
