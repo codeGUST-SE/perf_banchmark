@@ -147,7 +147,8 @@ def e2e_compare_nerd_terminologies
 end
 
 def e2e_compare_random_queries
-  File.open("random_queries_e2e_compare_results.txt", "w") do |f|
+  logger = Logger.new('e2e_random_queries.log')
+  File.open("random_queries_e2e_compare_results.txt", "a") do |f|
     f.write("N\tcodeGUST\tGoogle\tsearchcode\n")
   end
 
@@ -175,35 +176,44 @@ def e2e_compare_random_queries
         query << non_alpha(words[i])
       end
       query = query.join('+')
-      
-      s_cg = 0.0
-      s_gg = 0.0
-      s_sc = 0.0
-      (0...TRIES).each do
-        start = Time.now
-        Nokogiri::HTML(open("#{URL}#{query}"))
-        finish = Time.now
-        sleep(POLITENESS_POLICY_WAIT)
-        s_cg += (finish-start).to_f
+      logger.debug(query)
+      f = true
+      while f do
+        begin
+          s_cg = 0.0
+          s_gg = 0.0
+          s_sc = 0.0
+          (0...TRIES).each do
+            start = Time.now
+            Nokogiri::HTML(open("#{URL}#{query}"))
+            finish = Time.now
+            sleep(POLITENESS_POLICY_WAIT)
+            s_cg += (finish-start).to_f
 
-        start = Time.now
-        Nokogiri::HTML(open("#{URL_GG}#{query}"))
-        finish = Time.now
-        sleep(POLITENESS_POLICY_WAIT)
-        s_gg += (finish-start).to_f
+            start = Time.now
+            Nokogiri::HTML(open("#{URL_GG}#{query}"))
+            finish = Time.now
+            sleep(POLITENESS_POLICY_WAIT)
+            s_gg += (finish-start).to_f
 
-        start = Time.now
-        Nokogiri::HTML(open("#{URL_SC}#{query}"))
-        finish = Time.now
-        sleep(POLITENESS_POLICY_WAIT)
-        s_sc += (finish-start).to_f
+            start = Time.now
+            Nokogiri::HTML(open("#{URL_SC}#{query}"))
+            finish = Time.now
+            sleep(POLITENESS_POLICY_WAIT)
+            s_sc += (finish-start).to_f
+          end
+          s_cg /= TRIES.to_f
+          s_gg /= TRIES.to_f
+          s_sc /= TRIES.to_f
+          results_cg[n] << s_cg
+          results_gg[n] << s_gg
+          results_sc[n] << s_sc
+          f = false
+        rescue Exception => e
+          logger.debug(e.message)
+          logger.debug(e.backtrace.inspect )
+        end
       end
-      s_cg /= TRIES.to_f
-      s_gg /= TRIES.to_f
-      s_sc /= TRIES.to_f
-      results_cg[n] << s_cg
-      results_gg[n] << s_gg
-      results_sc[n] << s_sc
     end
     File.open("random_queries_e2e_compare_results.txt", "a") do |f|
       avg_cg = (results_cg[n].inject(0){|s,x| s + x }).to_f / TEST_PER_QUERY.to_f
