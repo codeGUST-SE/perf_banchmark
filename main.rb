@@ -6,7 +6,7 @@ require 'logger'
 URL = "https://codegust.appspot.com/search?utf8=%E2%9C%93&q="
 POLITENESS_POLICY_WAIT = 0
 TRIES = 3
-TEST_PER_QUERY = 5
+TEST_PER_QUERY = 405
 
 def rand_n(n, max)
   randoms = Set.new
