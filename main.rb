@@ -9,7 +9,7 @@ URL_GG = "https://www.google.com/search?q="
 URL_SC = "https://searchcode.com/?q="
 POLITENESS_POLICY_WAIT = 0
 TRIES = 3
-TEST_PER_QUERY = 405
+TEST_PER_QUERY = 500
 
 def rand_n(n, max)
   randoms = Set.new
@@ -135,7 +135,7 @@ def e2e_compare_nerd_terminologies
   end
 
   File.open("nerd_terminologies_e2e_compare_results.txt", "w") do |f|
-    f.write("N\tcodeGUST\tGoogle\tsearchcode")
+    f.write("N\tcodeGUST\tGoogle\tsearchcode\n")
     (1..5).each do |i|
       avg_cg = (results_cg[i].inject(0){|s,x| s + x }).to_f / results_cg[i].length.to_f
       avg_gg = (results_gg[i].inject(0){|s,x| s + x }).to_f / results_gg[i].length.to_f
@@ -146,6 +146,75 @@ def e2e_compare_nerd_terminologies
   end
 end
 
+def e2e_compare_random_queries
+  File.open("random_queries_e2e_compare_results.txt", "w") do |f|
+    f.write("N\tcodeGUST\tGoogle\tsearchcode\n")
+  end
+
+  results_cg = {1=>[], 2=>[], 3=>[], 4=>[], 5=>[]}
+  results_gg = {1=>[], 2=>[], 3=>[], 4=>[], 5=>[]}
+  results_sc = {1=>[], 2=>[], 3=>[], 4=>[], 5=>[]}
+
+  words = Set.new
+  File.open("nerd_words.txt", "r") do |f|
+    f.each_line do |word|
+      words.add(word.downcase.strip)
+    end
+  end
+  File.open("human_words.txt", "r") do |f|
+    f.each_line do |word|
+      words.add(word.strip)
+    end
+  end
+  words = words.to_a
+
+  for n in (1..5) do
+    (0...TEST_PER_QUERY).each do
+      query = []
+      rand_n(n, words.size).each do |i|
+        query << non_alpha(words[i])
+      end
+      query = query.join('+')
+      
+      s_cg = 0.0
+      s_gg = 0.0
+      s_sc = 0.0
+      (0...TRIES).each do
+        start = Time.now
+        Nokogiri::HTML(open("#{URL}#{query}"))
+        finish = Time.now
+        sleep(POLITENESS_POLICY_WAIT)
+        s_cg += (finish-start).to_f
+
+        start = Time.now
+        Nokogiri::HTML(open("#{URL_GG}#{query}"))
+        finish = Time.now
+        sleep(POLITENESS_POLICY_WAIT)
+        s_gg += (finish-start).to_f
+
+        start = Time.now
+        Nokogiri::HTML(open("#{URL_SC}#{query}"))
+        finish = Time.now
+        sleep(POLITENESS_POLICY_WAIT)
+        s_sc += (finish-start).to_f
+      end
+      s_cg /= TRIES.to_f
+      s_gg /= TRIES.to_f
+      s_sc /= TRIES.to_f
+      results_cg[n] << s_cg
+      results_gg[n] << s_gg
+      results_sc[n] << s_sc
+    end
+    File.open("random_queries_e2e_compare_results.txt", "a") do |f|
+      avg_cg = (results_cg[n].inject(0){|s,x| s + x }).to_f / TEST_PER_QUERY.to_f
+      avg_gg = (results_gg[n].inject(0){|s,x| s + x }).to_f / TEST_PER_QUERY.to_f
+      avg_sc = (results_sc[n].inject(0){|s,x| s + x }).to_f / TEST_PER_QUERY.to_f
+      f.write("#{n}\t#{avg_cg}\t#{avg_gg}\t#{avg_sc}\n")
+    end
+  end
+end
+
 # benchmark_random_queries
 # benchmark_nerd_terminologies
-e2e_compare_nerd_terminologies
+# e2e_compare_nerd_terminologies
+e2e_compare_random_queries
