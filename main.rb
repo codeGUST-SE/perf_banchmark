@@ -2,13 +2,14 @@ require 'open-uri'
 require 'nokogiri'
 require 'set'
 require 'benchmark'
+require 'logger'
 
 URL = "https://codegust.appspot.com/search?utf8=%E2%9C%93&q="
 URL_GG = "https://www.google.com/search?q="
 URL_SC = "https://searchcode.com/?q="
 POLITENESS_POLICY_WAIT = 0
 TRIES = 3
-TEST_PER_QUERY = 500
+TEST_PER_QUERY = 405
 
 def rand_n(n, max)
   randoms = Set.new
@@ -23,6 +24,7 @@ def non_alpha(word)
 end
 
 def benchmark_nerd_terminologies
+  logger = Logger.new('benchmark_nerd.log')
   results = {1=>[], 2=>[], 3=>[], 4=>[], 5=>[]}
 
   File.open("nerd_terminologies.txt", "r") do |f|
@@ -35,9 +37,12 @@ def benchmark_nerd_terminologies
         s += doc.xpath("//*[@id='retrieval-time']").text.split[2].to_f
       end
       s /= TRIES.to_f
+      logger.debug( query + ' s: '+ s.to_s)
       results[line.split.size] << s
     end
   end
+
+  logger.close
 
   File.open("nerd_terminologies_test_results.txt", "w") do |f|
     results.each do |key, value|
@@ -50,6 +55,7 @@ def benchmark_nerd_terminologies
 end
 
 def benchmark_random_queries
+  logger = Logger.new('random_queries.log')
   results = { 1=>[], 2=>[], 3=>[], 4=>[], 5=>[] }
   words = Set.new
   File.open("nerd_words.txt", "r") do |f|
@@ -77,6 +83,7 @@ def benchmark_random_queries
         s += doc.xpath("//*[@id='retrieval-time']").text.split[2].to_f
       end
       s /= TRIES.to_f
+      logger.debug( query + ' s: '+ s.to_s)
       results[n] << s
     end
     File.open("random_queries_test_results.txt", "a") do |f|
@@ -85,6 +92,7 @@ def benchmark_random_queries
       f.write("#{n}\t#{avg}\n")
     end
   end
+  logger.close
 end
 
 def e2e_compare_nerd_terminologies
