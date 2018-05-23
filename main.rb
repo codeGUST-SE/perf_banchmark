@@ -171,14 +171,14 @@ def e2e_compare_random_queries
 
   for n in (1..5) do
     (0...TEST_PER_QUERY).each do
-      query = []
-      rand_n(n, words.size).each do |i|
-        query << non_alpha(words[i])
-      end
-      query = query.join('+')
-      logger.debug(query)
       f = true
       while f do
+        query = []
+        rand_n(n, words.size).each do |i|
+          query << non_alpha(words[i])
+        end
+        query = query.join('+')
+        logger.debug(query)
         begin
           s_cg = 0.0
           s_gg = 0.0
