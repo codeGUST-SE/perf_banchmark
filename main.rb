@@ -7,8 +7,8 @@ require 'logger'
 URL = "https://codegust.appspot.com/search?utf8=%E2%9C%93&q="
 URL_GG = "https://www.google.com/search?q="
 URL_SC = "https://searchcode.com/?q="
-POLITENESS_POLICY_WAIT = 0
-TRIES = 3
+POLITENESS_POLICY_WAIT = 5
+TRIES = 1
 TEST_PER_QUERY = 500
 
 def rand_n(n, max)
