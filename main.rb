@@ -186,18 +186,21 @@ def e2e_compare_random_queries
           (0...TRIES).each do
             start = Time.now
             Nokogiri::HTML(open("#{URL}#{query}"))
+            logger.debug("CG")
             finish = Time.now
             sleep(POLITENESS_POLICY_WAIT)
             s_cg += (finish-start).to_f
 
             start = Time.now
             Nokogiri::HTML(open("#{URL_GG}#{query}"))
+            logger.debug("GG")
             finish = Time.now
             sleep(POLITENESS_POLICY_WAIT)
             s_gg += (finish-start).to_f
 
             start = Time.now
             Nokogiri::HTML(open("#{URL_SC}#{query}"))
+            logger.debug("SC")
             finish = Time.now
             sleep(POLITENESS_POLICY_WAIT)
             s_sc += (finish-start).to_f
